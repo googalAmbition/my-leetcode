@@ -28,7 +28,7 @@ public class RadixSort implements IArraySort {
 
     private int getMaxValue(int[] arr) {
         int maxValue = arr[0];
-        for (int value : arr) {
+        for (int value: arr) {
             if (maxValue < value) {
                 maxValue = value;
             }
@@ -61,8 +61,8 @@ public class RadixSort implements IArraySort {
             }
 
             int pos = 0;
-            for (int[] bucket : counter) {
-                for (int value : bucket) {
+            for (int[] bucket: counter) {
+                for (int value: bucket) {
                     arr[pos++] = value;
                 }
             }

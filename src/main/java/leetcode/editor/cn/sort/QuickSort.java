@@ -43,5 +43,4 @@ public class QuickSort implements IArraySort {
         arr[i] = arr[j];
         arr[j] = temp;
     }
-
 }

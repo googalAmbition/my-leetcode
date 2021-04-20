@@ -42,7 +42,8 @@ public class DiYiGeZhiChuXianYiCiDeZiFuLcof {
                 if (nums[aChar - 'a'] == 1) {
                     return aChar;
                 }
-            } return ' ';
+            }
+            return ' ';
         }
     }
     //leetcode submit region end(Prohibit modification and deletion)

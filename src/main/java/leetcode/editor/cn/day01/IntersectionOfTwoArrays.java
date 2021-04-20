@@ -62,11 +62,9 @@ public class IntersectionOfTwoArrays {
                 }
             }
             return Arrays.copyOfRange(intersection, 0, index);
-
         }
     }
     //leetcode submit region end(Prohibit modification and deletion)
-
 
     public int[] intersection(int[] nums1, int[] nums2) {
         Arrays.sort(nums1);

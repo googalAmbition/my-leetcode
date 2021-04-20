@@ -32,7 +32,6 @@ package leetcode.editor.cn.day01;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
-import java.util.LinkedList;
 
 public class YongLiangGeZhanShiXianDuiLieLcof {
 

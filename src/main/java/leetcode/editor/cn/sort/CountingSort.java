@@ -21,7 +21,7 @@ public class CountingSort implements IArraySort {
         int bucketLen = maxValue + 1;
         int[] bucket = new int[bucketLen];
 
-        for (int value : arr) {
+        for (int value: arr) {
             bucket[value]++;
         }
 
@@ -37,12 +37,11 @@ public class CountingSort implements IArraySort {
 
     private int getMaxValue(int[] arr) {
         int maxValue = arr[0];
-        for (int value : arr) {
+        for (int value: arr) {
             if (maxValue < value) {
                 maxValue = value;
             }
         }
         return maxValue;
     }
-
 }

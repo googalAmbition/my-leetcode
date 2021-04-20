@@ -39,7 +39,7 @@ public class LongestCommonPrefix {
 
     public static void main(String[] args) {
         Solution solution = new LongestCommonPrefix().new Solution();
-        System.out.println(solution.longestCommonPrefix(new String[] {"ab","a"}));
+        System.out.println(solution.longestCommonPrefix(new String[] {"ab", "a"}));
     }
 
     //leetcode submit region begin(Prohibit modification and deletion)
@@ -61,18 +61,16 @@ public class LongestCommonPrefix {
                 }
             }
             return strs[0];
-
         }
     }
     //leetcode submit region end(Prohibit modification and deletion)
-
 
     public String longestCommonPrefix(String[] strs) {
         if (strs.length == 0) {
             return "";
         }
 
-        for (int i = 1; i < strs[0].length()+1; i++) {
+        for (int i = 1; i < strs[0].length() + 1; i++) {
             Set<String> prefix = new HashSet<>();
             for (String str: strs) {
                 if (str.length() < i) {

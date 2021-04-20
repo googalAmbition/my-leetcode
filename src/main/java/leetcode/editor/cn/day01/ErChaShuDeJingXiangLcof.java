@@ -57,7 +57,7 @@ public class ErChaShuDeJingXiangLcof {
     class Solution {
 
         public TreeNode mirrorTree(TreeNode root) {
-            if (root == null){
+            if (root == null) {
                 return null;
             }
             TreeNode tmp = root.left;

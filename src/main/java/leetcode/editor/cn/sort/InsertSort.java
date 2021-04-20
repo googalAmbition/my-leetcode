@@ -29,7 +29,6 @@ public class InsertSort implements IArraySort {
             if (j != i) {
                 arr[j] = tmp;
             }
-
         }
         return arr;
     }

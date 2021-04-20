@@ -51,7 +51,7 @@ public class DaYinCong1daoZuiDaDeNweiShuLcof {
     class SolutionV2 {
 
         StringBuilder res;
-        int  n;
+        int n;
         char[] num, loop = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
 
         public String printNumbers(int n) {

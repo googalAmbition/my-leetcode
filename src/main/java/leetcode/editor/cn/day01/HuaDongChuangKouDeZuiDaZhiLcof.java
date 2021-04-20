@@ -50,7 +50,7 @@ public class HuaDongChuangKouDeZuiDaZhiLcof {
                 int num = nums[i];
                 queue.add(num);
                 if (queue.size() >= k) {
-                   int max = queue.poll();
+                    int max = queue.poll();
                     for (Integer integer: queue) {
                         max = Math.max(integer, max);
                     }

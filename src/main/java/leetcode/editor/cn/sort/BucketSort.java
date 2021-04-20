@@ -24,7 +24,7 @@ public class BucketSort implements IArraySort {
 
         int minValue = arr[0];
         int maxValue = arr[0];
-        for (int value : arr) {
+        for (int value: arr) {
             if (value < minValue) {
                 minValue = value;
             } else if (value > maxValue) {
@@ -42,13 +42,13 @@ public class BucketSort implements IArraySort {
         }
 
         int arrIndex = 0;
-        for (int[] bucket : buckets) {
+        for (int[] bucket: buckets) {
             if (bucket.length <= 0) {
                 continue;
             }
             // 对每个桶进行排序，这里使用了插入排序
             bucket = insertSort.sort(bucket);
-            for (int value : bucket) {
+            for (int value: bucket) {
                 arr[arrIndex++] = value;
             }
         }
@@ -67,5 +67,4 @@ public class BucketSort implements IArraySort {
         arr[arr.length - 1] = value;
         return arr;
     }
-
 }

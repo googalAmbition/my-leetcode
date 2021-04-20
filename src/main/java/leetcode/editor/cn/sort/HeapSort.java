@@ -54,5 +54,4 @@ public class HeapSort implements IArraySort {
         arr[i] = arr[j];
         arr[j] = temp;
     }
-
 }

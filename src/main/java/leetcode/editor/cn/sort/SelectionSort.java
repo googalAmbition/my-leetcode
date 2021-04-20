@@ -29,7 +29,6 @@ public class SelectionSort implements IArraySort {
                 arr[i] = arr[min];
                 arr[min] = tmp;
             }
-
         }
         return arr;
     }

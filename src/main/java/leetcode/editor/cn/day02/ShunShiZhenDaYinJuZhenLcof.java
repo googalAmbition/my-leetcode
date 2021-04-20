@@ -60,7 +60,7 @@ public class ShunShiZhenDaYinJuZhenLcof {
                     index++;
                 }
                 rowMin++;
-                if (rowMin==row){
+                if (rowMin == row) {
                     break;
                 }
                 for (int k = rowMin; k < row; k++) {
@@ -68,7 +68,7 @@ public class ShunShiZhenDaYinJuZhenLcof {
                     index++;
                 }
                 col--;
-                if (colMin == col){
+                if (colMin == col) {
                     break;
                 }
                 for (int k = col - 1; k >= colMin; k--) {

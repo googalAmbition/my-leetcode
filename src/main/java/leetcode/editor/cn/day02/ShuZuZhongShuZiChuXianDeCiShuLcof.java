@@ -31,7 +31,7 @@ public class ShuZuZhongShuZiChuXianDeCiShuLcof {
 
     public static void main(String[] args) {
         Solution solution = new ShuZuZhongShuZiChuXianDeCiShuLcof().new Solution();
-        int[] nums = {1,2,3,3,2,4,6,7,7,6};
+        int[] nums = {1, 2, 3, 3, 2, 4, 6, 7, 7, 6};
         solution.singleNumbers(nums);
     }
 

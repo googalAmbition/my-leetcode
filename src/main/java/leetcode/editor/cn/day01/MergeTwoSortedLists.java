@@ -92,5 +92,4 @@ public class MergeTwoSortedLists {
         }
     }
     //leetcode submit region end(Prohibit modification and deletion)
-
 }

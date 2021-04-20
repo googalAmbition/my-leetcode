@@ -58,7 +58,6 @@ public class QingWaTiaoTaiJieWenTiLcof {
             }
 
             return second > 1e9 + 7 ? (int) (second % (1e9 + 7)) : second;
-
         }
     }
     //leetcode submit region end(Prohibit modification and deletion)

@@ -96,7 +96,7 @@ class Node {
     class Solution {
 
         public Node copyRandomList(Node head) {
-            if (head==null){
+            if (head == null) {
                 return null;
             }
             Node copy = head;
