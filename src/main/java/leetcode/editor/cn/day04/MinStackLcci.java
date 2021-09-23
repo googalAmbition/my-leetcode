@@ -15,8 +15,8 @@ public class MinStackLcci {
     //leetcode submit region begin(Prohibit modification and deletion)
     class MinStack {
 
-        private Deque<Integer> data;
-        private Deque<Integer> min;
+        private final Deque<Integer> data;
+        private final Deque<Integer> min;
 
         /**
          * initialize your data structure here.

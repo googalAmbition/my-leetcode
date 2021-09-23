@@ -43,7 +43,6 @@
 package leetcode.editor.cn.day03;
 
 import java.util.Random;
-import javax.lang.model.type.ArrayType;
 
 public class ShuffleAnArray {
 
@@ -85,7 +84,6 @@ public class ShuffleAnArray {
             }
             return array;
         }
-
     }
 
     /**

@@ -8,7 +8,6 @@
 // 化栈为队
 package leetcode.editor.cn.day04;
 
-import java.io.PrintStream;
 import java.util.Deque;
 import java.util.LinkedList;
 
@@ -17,8 +16,8 @@ public class ImplementQueueUsingStacksLcci {
     //leetcode submit region begin(Prohibit modification and deletion)
     class MyQueue {
 
-        private Deque<Integer> first;
-        private Deque<Integer> second;
+        private final Deque<Integer> first;
+        private final Deque<Integer> second;
 
         /**
          * Initialize your data structure here.
@@ -40,7 +39,7 @@ public class ImplementQueueUsingStacksLcci {
          */
         public int pop() {
             if (second.isEmpty()) {
-               first2second();
+                first2second();
             }
             return second.pop();
         }
@@ -62,7 +61,7 @@ public class ImplementQueueUsingStacksLcci {
             return first.isEmpty() && second.isEmpty();
         }
 
-        private void first2second(){
+        private void first2second() {
             while (!first.isEmpty()) {
                 second.push(first.pop());
             }

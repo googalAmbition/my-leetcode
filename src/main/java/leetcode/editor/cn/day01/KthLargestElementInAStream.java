@@ -51,9 +51,9 @@ public class KthLargestElementInAStream {
     //leetcode submit region begin(Prohibit modification and deletion)
     class KthLargest {
 
-        private PriorityQueue<Integer> maxSaveSmale = new PriorityQueue<>(Comparator.reverseOrder());
-        private PriorityQueue<Integer> minSaveBig = new PriorityQueue<>();
-        private int k;
+        private final PriorityQueue<Integer> maxSaveSmale = new PriorityQueue<>(Comparator.reverseOrder());
+        private final PriorityQueue<Integer> minSaveBig = new PriorityQueue<>();
+        private final int k;
 
         public KthLargest(int k, int[] nums) {
             this.k = k;

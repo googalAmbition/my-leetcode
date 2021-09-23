@@ -48,8 +48,8 @@ public class StackOfPlatesLcci {
     //leetcode submit region begin(Prohibit modification and deletion)
     class StackOfPlates {
 
-        private List<Deque<Integer>> list;
-        private int cap;
+        private final List<Deque<Integer>> list;
+        private final int cap;
 
         public StackOfPlates(int cap) {
             this.cap = cap;

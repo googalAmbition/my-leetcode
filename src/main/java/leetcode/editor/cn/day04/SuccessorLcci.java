@@ -62,7 +62,7 @@ public class SuccessorLcci {
      */
     class Solution {
 
-        private List<TreeNode> list = new ArrayList<>();
+        private final List<TreeNode> list = new ArrayList<>();
 
         public TreeNode inorderSuccessor(TreeNode root, TreeNode p) {
             midTraversal(root);
@@ -97,20 +97,20 @@ public class SuccessorLcci {
         TreeNode cur = root;
         boolean flag = false;
 
-        while(!stack.isEmpty() || cur != null){
+        while (!stack.isEmpty() || cur != null) {
 
-            while(cur != null){
+            while (cur != null) {
                 stack.push(cur);
                 cur = cur.left;
             }
 
             TreeNode node = stack.pop();
 
-            if(flag){
+            if (flag) {
                 return node;
             }
             //记录标志位，下一个节点即输出
-            if(node == p){
+            if (node == p) {
                 flag = true;
             }
 
@@ -118,8 +118,5 @@ public class SuccessorLcci {
         }
 
         return null;
-
     }
-
-
 }

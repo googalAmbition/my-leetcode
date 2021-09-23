@@ -60,7 +60,6 @@ public class IntersectionOfTwoArrays {
                 }
             }
             return Arrays.copyOfRange(intersection, 0, index);
-
         }
     }
     //leetcode submit region end(Prohibit modification and deletion)

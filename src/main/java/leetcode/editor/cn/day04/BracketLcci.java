@@ -32,7 +32,7 @@ public class BracketLcci {
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
 
-        private ArrayList<String> res = new ArrayList<>();
+        private final ArrayList<String> res = new ArrayList<>();
 
         public List<String> generateParenthesis(int n) {
             dfs(n, 0, 0, "");

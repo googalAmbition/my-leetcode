@@ -61,7 +61,7 @@ public class FindTheWinnerOfTheCircularGame {
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
 
-       private int f(int n, int k) {
+        private int f(int n, int k) {
             if (n == 1) {
                 return 0;
             }

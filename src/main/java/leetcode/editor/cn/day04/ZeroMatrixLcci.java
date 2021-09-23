@@ -41,7 +41,6 @@ package leetcode.editor.cn.day04;
 
 public class ZeroMatrixLcci {
 
-
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
 

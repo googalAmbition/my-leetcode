@@ -50,7 +50,7 @@ import java.util.Queue;
 //leetcode submit region begin(Prohibit modification and deletion)
 class RecentCounter {
 
-    private Queue<Integer> pingQueue = new ArrayDeque<>();
+    private final Queue<Integer> pingQueue = new ArrayDeque<>();
 
     public RecentCounter() {
 

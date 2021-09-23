@@ -100,7 +100,7 @@ class Node {
         public Node left;
         public Node right;
 
-        public Node() {}
+        public Node() { }
 
         public Node(int _val) {
             val = _val;

@@ -53,7 +53,7 @@ public class XuLieHuaErChaShuLcof {
      */
     public class Codec {
 
-        private StringBuilder ser = new StringBuilder();
+        private final StringBuilder ser = new StringBuilder();
         private TreeNode head;
 
         // Encodes a tree to a single string.

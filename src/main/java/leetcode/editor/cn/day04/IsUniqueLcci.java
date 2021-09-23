@@ -45,7 +45,6 @@ public class IsUniqueLcci {
                     return false;
                 }
                 aa |= bb;
-
             }
 
             return true;

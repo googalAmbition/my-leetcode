@@ -42,8 +42,8 @@ public class YongLiangGeZhanShiXianDuiLieLcof {
     //leetcode submit region begin(Prohibit modification and deletion)
     class CQueue {
 
-        private Deque<Integer> push = new ArrayDeque<>();
-        private Deque<Integer> pop = new ArrayDeque<>();
+        private final Deque<Integer> push = new ArrayDeque<>();
+        private final Deque<Integer> pop = new ArrayDeque<>();
 
         public CQueue() {
 

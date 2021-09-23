@@ -43,12 +43,11 @@ public class CheckBalanceLcci {
                 return Math.max(leftHeight, rightHeight) + 1;
             }
         }
-
     }
     //leetcode submit region end(Prohibit modification and deletion)
 
-
     class Solution1 {
+
         public boolean isBalanced(TreeNode root) {
             if (root == null) {
                 return true;
@@ -65,5 +64,4 @@ public class CheckBalanceLcci {
             }
         }
     }
-
 }

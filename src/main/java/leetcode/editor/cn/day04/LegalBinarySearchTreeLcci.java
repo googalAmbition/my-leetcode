@@ -46,10 +46,7 @@ public class LegalBinarySearchTreeLcci {
             if (!helper(node.right, val, upper)) {
                 return false;
             }
-            if (!helper(node.left, lower, val)) {
-                return false;
-            }
-            return true;
+            return helper(node.left, lower, val);
         }
     }
     //leetcode submit region end(Prohibit modification and deletion)

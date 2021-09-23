@@ -28,7 +28,7 @@ public class SumOfTwoIntegers {
     class Solution {
 
         public int getSum(int a, int b) {
-            while(a != 0){
+            while (a != 0) {
                 int newA = (a & b) << 1;
                 int newB = a ^ b;
                 a = newA;

@@ -70,7 +70,6 @@ public class TrappingRainWater {
                 ans += Math.min(leftMax[i], rightMax[i]) - height[i];
             }
             return ans;
-
         }
     }
     //leetcode submit region end(Prohibit modification and deletion)
@@ -114,5 +113,4 @@ public class TrappingRainWater {
         }
         return ans;
     }
-
 }

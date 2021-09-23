@@ -56,7 +56,7 @@ public class FlattenNestedListIterator implements Iterator<Integer> {
     public class NestedIterator implements Iterator<Integer> {
 
         // 存储列表的当前遍历位置
-        private Deque<Iterator<NestedInteger>> stack;
+        private final Deque<Iterator<NestedInteger>> stack;
 
         public NestedIterator(List<NestedInteger> nestedList) {
             stack = new LinkedList<Iterator<NestedInteger>>();
@@ -98,8 +98,8 @@ public class FlattenNestedListIterator implements Iterator<Integer> {
      */
     //leetcode submit region end(Prohibit modification and deletion)
 
-    private List<Integer> vals;
-    private Iterator<Integer> cur;
+    private final List<Integer> vals;
+    private final Iterator<Integer> cur;
 
     public FlattenNestedListIterator(List<NestedInteger> nestedList) {
         vals = new ArrayList<Integer>();

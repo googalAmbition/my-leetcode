@@ -93,7 +93,6 @@ public class LinkedListCycleLcci {
                 }
             }
             return null;
-
         }
     }
     //leetcode submit region end(Prohibit modification and deletion)

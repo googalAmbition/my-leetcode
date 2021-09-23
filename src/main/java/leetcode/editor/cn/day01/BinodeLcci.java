@@ -45,7 +45,7 @@ public class BinodeLcci {
     class Solution {
 
         private TreeNode pre = null;
-        private TreeNode head = new TreeNode(0);
+        private final TreeNode head = new TreeNode(0);
 
         public TreeNode convertBiNode(TreeNode root) {
             helper(root);

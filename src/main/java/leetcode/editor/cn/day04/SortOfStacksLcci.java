@@ -38,8 +38,8 @@ public class SortOfStacksLcci {
     //leetcode submit region begin(Prohibit modification and deletion)
     class SortedStack {
 
-        private Deque<Integer> data;
-        private Deque<Integer> exchange;
+        private final Deque<Integer> data;
+        private final Deque<Integer> exchange;
 
         public SortedStack() {
             data = new LinkedList<>();

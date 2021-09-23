@@ -33,7 +33,7 @@ public class Permutations {
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
 
-        private List<List<Integer>> re = new ArrayList<>();
+        private final List<List<Integer>> re = new ArrayList<>();
 
         public List<List<Integer>> permute(int[] nums) {
             if (nums.length == 0) {

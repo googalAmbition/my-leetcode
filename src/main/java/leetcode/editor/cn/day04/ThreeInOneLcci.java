@@ -143,9 +143,9 @@ public class ThreeInOneLcci {
 
     class Demo {
 
-        private int[] data;
-        private int[] index = new int[3];
-        private int size;
+        private final int[] data;
+        private final int[] index = new int[3];
+        private final int size;
 
         public Demo(int stackSize) {
             data = new int[stackSize * 3];

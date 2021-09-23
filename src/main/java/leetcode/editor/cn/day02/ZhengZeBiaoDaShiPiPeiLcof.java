@@ -69,7 +69,7 @@ public class ZhengZeBiaoDaShiPiPeiLcof {
         public boolean isMatch(String s, String p) {
             int m = s.length();
             int n = p.length();
-            boolean f[][] = new boolean[m + 1][n + 1];
+            boolean[][] f = new boolean[m + 1][n + 1];
             f[0][0] = true;//f[0][0]代表s和p均为空字符串，f[1][1]代表s和p的第一个字符（即在s和p中下标为0的字符）
             for (int i = 0; i <= m; ++i) {
                 for (int j = 1; j <= n; ++j) {

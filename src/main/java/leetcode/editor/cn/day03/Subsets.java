@@ -71,6 +71,7 @@ public class Subsets {
      * 递归解法
      */
     class SolutionV2 {
+
         List<Integer> t = new ArrayList<Integer>();
         List<List<Integer>> ans = new ArrayList<List<Integer>>();
 
@@ -90,6 +91,4 @@ public class Subsets {
             dfs(cur + 1, nums);
         }
     }
-
-
 }
