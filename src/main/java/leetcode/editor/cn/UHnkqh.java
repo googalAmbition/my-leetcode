@@ -47,6 +47,10 @@
 //
 // 👍 184 👎 0
 
+<<<<<<<< HEAD:src/main/java/leetcode/editor/cn/UHnkqh.java
+========
+// 反转链表
+>>>>>>>> f575d1e (my leetcode):src/main/java/leetcode/editor/cn/ReverseLinkedList.java
 package leetcode.editor.cn;
 
 import leetcode.editor.cn.struct.ListNode;
