@@ -39,17 +39,36 @@
 // 单词规律
 package leetcode.editor.cn;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class WordPattern {
 
     public static void main(String[] args) {
         Solution solution = new WordPattern().new Solution();
+        solution.wordPattern("abba", "dog cat cat dog");
     }
 
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
 
         public boolean wordPattern(String pattern, String s) {
-            return false;
+            String[] s1 = s.split(" ");
+            if (s1.length != pattern.length()) {
+                return false;
+            }
+            Map<Character, String> p2s = new HashMap<>();
+            Map<String, Character> s2p = new HashMap<>();
+            for (int i = 0; i < pattern.length(); i++) {
+                char key = pattern.charAt(i);
+                int finalI = i;
+                String sw = p2s.computeIfAbsent(key, x -> s1[finalI]);
+                Character character = s2p.computeIfAbsent(s1[i], x -> key);
+                if (!sw.equals(s1[i]) || !character.equals(key)) {
+                    return false;
+                }
+            }
+            return true;
         }
     }
     //leetcode submit region end(Prohibit modification and deletion)
