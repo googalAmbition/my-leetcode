@@ -1,0 +1,39 @@
+### 解题思路
+
+此处撰写解题思路
+
+### 代码
+
+* java
+
+```java
+class Solution {
+    public void merge(int[] nums1, int m, int[] nums2, int n) {
+        int i=0;
+        int j=0;
+
+        int[] back_num1 = new int[m];
+        for(int k=0;k<m;k++){
+            back_num1[k] = nums1[k];
+        }
+
+        int len=0;
+        while(i<m && j<n){
+            if(back_num1[i]>nums2[j]){
+                 nums1[len++] = nums2[j++];
+            } else{
+                 nums1[len++] = back_num1[i++];
+            }
+        }
+
+        for(int b=i;b<m;b++){
+              nums1[len++] = back_num1[i++];
+        }
+        for(int v=j;v<n;v++){
+              nums1[len++] = nums2[j++];
+        }
+
+    }
+}
+```
+
