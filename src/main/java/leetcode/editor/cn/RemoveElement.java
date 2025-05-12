@@ -70,7 +70,19 @@ public class RemoveElement {
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
 
-        public int removeElement(int[] nums, int val) {
+        public int removeElement(int[] nums, int val){
+
+            int l = 0;
+            for (int i = 0; i < nums.length; i++) {
+                if (nums[i] != val){
+                    nums[l] = nums[i];
+                    l++;
+                }
+            }
+            return l;
+        }
+
+        public int removeElement1(int[] nums, int val) {
             if (nums.length == 0) {
                 return 0;
             }
@@ -88,4 +100,17 @@ public class RemoveElement {
         }
     }
     //leetcode submit region end(Prohibit modification and deletion)
+
+    public int removeElement(int[] nums, int val) {
+        int n = nums.length;
+        int left = 0;
+        for (int right = 0; right < n; right++) {
+            if (nums[right] != val) {
+                nums[left] = nums[right];
+                left++;
+            }
+        }
+        return left;
+    }
+
 }

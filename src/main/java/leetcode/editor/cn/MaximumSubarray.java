@@ -59,6 +59,7 @@ public class MaximumSubarray {
 
     public static void main(String[] args) {
         Solution solution = new MaximumSubarray().new Solution();
+        System.out.println(solution.maxSubArray(new int[] {-1, -1, -2}));
     }
 
     //leetcode submit region begin(Prohibit modification and deletion)

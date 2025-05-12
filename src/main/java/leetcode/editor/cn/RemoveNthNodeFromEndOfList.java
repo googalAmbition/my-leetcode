@@ -65,7 +65,7 @@ public class RemoveNthNodeFromEndOfList {
         public ListNode removeNthFromEnd(ListNode head, int n) {
 
             ListNode fast = head, slow = head;
-            while (n + 1 > 0 && fast != null) {
+            while (n >= 0 && fast != null) {
                 fast = fast.next;
                 n--;
             }
@@ -82,6 +82,26 @@ public class RemoveNthNodeFromEndOfList {
             }
 
             return head;
+        }
+
+        public ListNode removeNthFromEnd2(ListNode head, int n) {
+            ListNode fast = head, slow = head;
+
+            while (n + 1 > 0 && fast != null) {
+                fast = fast.next;
+                n--;
+            }
+
+            if (n != -1) {
+                return head == null ? null : head.next;
+            }
+            while (fast != null) {
+                slow = slow.next;
+                fast = fast.next;
+            }
+            slow.next = slow.next.next;
+            return head;
+
         }
     }
     //leetcode submit region end(Prohibit modification and deletion)

@@ -98,6 +98,18 @@ public class IntersectionOfTwoLinkedLists {
     public class Solution {
 
         public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+            if (headA == null || headB == null) {
+                return null;
+            }
+            ListNode pA = headA, pB = headB;
+            while (pA != pB) {
+                pA = pA == null ? headB : pA.next;
+                pB = pB == null ? headA : pB.next;
+            }
+            return pA;
+        }
+
+        public ListNode getIntersectionNode3(ListNode headA, ListNode headB) {
             int lenA = length(headA);
             int lenB = length(headB);
             if (lenA > lenB) {
@@ -158,16 +170,6 @@ public class IntersectionOfTwoLinkedLists {
             return null;
         }
 
-        public ListNode getIntersectionNode2(ListNode headA, ListNode headB) {
-            if (headA == null || headB == null) {
-                return null;
-            }
-            ListNode pA = headA, pB = headB;
-            while (pA != pB) {
-                pA = pA == null ? headB : pA.next;
-                pB = pB == null ? headA : pB.next;
-            }
-            return pA;
-        }
+
     }
 }

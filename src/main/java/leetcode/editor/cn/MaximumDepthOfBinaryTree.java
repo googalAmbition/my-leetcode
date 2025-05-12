@@ -50,14 +50,16 @@ public class MaximumDepthOfBinaryTree {
             return dfs(root);
         }
 
+
         private int dfs(TreeNode root) {
             if (root == null) {
                 return 0;
             }
             int left = dfs(root.left);
-            int right = dfs((root.right));
+            int right = dfs(root.right);
             return Math.max(left, right) + 1;
         }
+
     }
     //leetcode submit region end(Prohibit modification and deletion)
 }

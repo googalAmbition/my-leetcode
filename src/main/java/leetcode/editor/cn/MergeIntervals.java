@@ -58,6 +58,7 @@ public class MergeIntervals {
             List<int[]> merged = new ArrayList<>();
             for (int[] interval: intervals) {
                 int L = interval[0], R = interval[1];
+                // 1,开始直接put 2. 对比最后一个结合右边界
                 if (merged.size() == 0 || merged.get(merged.size() - 1)[1] < L) {
                     merged.add(new int[] {L, R});
                 } else {

@@ -142,14 +142,85 @@ public class SortList {
             }
 
             // 退出while循环之后,比较哪个链表剩下长度更长,直接拼接在排序链表末尾
-            if (l1 == null)
+            if (l1 == null) {
                 curr.next = l2;
-            if (l2 == null)
+            }
+            if (l2 == null) {
                 curr.next = l1;
+            }
 
             // 最后返回合并后有序的链表
             return dummy.next;
         }
     }
     //leetcode submit region end(Prohibit modification and deletion)
+
+
+    public ListNode sortList(ListNode head) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+        ListNode mid = findMiddle(head);
+        ListNode left = sortList(head);
+        ListNode right = sortList(mid);
+        return merge(left, right);
+    }
+
+    ListNode findMiddle(ListNode head) {
+        ListNode dummy = new ListNode(0, head);
+        ListNode slow = dummy, fast = dummy;
+        while (fast.next != null) {
+            if (fast.next.next == null) {
+                break;
+            }
+            fast = fast.next.next;
+            slow = slow.next;
+        }
+        ListNode x = slow.next;
+        slow.next = null;
+        return x;
+    }
+
+    // 迭代实现
+    private ListNode merge(ListNode left, ListNode right) {
+        ListNode alpha = new ListNode(0);
+        ListNode ans = alpha;
+        while (left != null && right != null) {
+            if (left.val < right.val) {
+                ans.next = left;
+                left = left.next;
+            } else {
+                ans.next = right;
+                right = right.next;
+            }
+            ans = ans.next;
+        }
+        if (left == null) {
+            ans.next = right;
+        } else {
+            ans.next = left;
+        }
+        return alpha.next;
+    }
+
+    // 递归实现
+    // ListNode merge(ListNode left, ListNode right) {
+    //     if (left == null) {
+    //         return right;
+    //     }
+    //     if (right == null) {
+    //         return left;
+    //     }
+    //     if (left.val < right.val) {
+    //         left.next = merge(left.next, right);
+    //         return left;
+    //     } else {
+    //         right.next = merge(left, right.next);
+    //         return right;
+    //     }
+    // }
+
+
+
+
 }

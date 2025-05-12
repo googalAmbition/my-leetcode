@@ -68,10 +68,11 @@ public class SearchInRotatedSortedArray {
             }
             int left = 0, right = n - 1;
             while (left <= right) {
-                int mid = (left + right) / 2;
+                int mid = (right - left) / 2 + left;
                 if (nums[mid] == target) {
                     return mid;
                 }
+                // 0-中间为增序列
                 if (nums[0] <= nums[mid]) {
                     if (nums[0] <= target && target < nums[mid]) {
                         right = mid - 1;
@@ -79,7 +80,7 @@ public class SearchInRotatedSortedArray {
                         left = mid + 1;
                     }
                 } else {
-                    if (nums[mid] < target && target <= nums[n - 1]) {
+                    if (nums[n - 1] >= target && target > nums[mid]) {
                         left = mid + 1;
                     } else {
                         right = mid - 1;

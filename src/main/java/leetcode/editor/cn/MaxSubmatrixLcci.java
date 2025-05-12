@@ -37,7 +37,7 @@ public class MaxSubmatrixLcci {
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
 
-        public int[] getMaxMatrix(int[][] matrix) {
+        public int[] getMaxMatrix1(int[][] matrix) {
             int M = matrix.length;
             int N = matrix[0].length;
             int[][][] DP = new int[N][N][M];
@@ -53,7 +53,9 @@ public class MaxSubmatrixLcci {
             }
             for (int i = 1; i < M; i++) {
                 for (int j = 0; j < N; j++) {
-                    if (DP[j][j][0] > 0) { DP[j][j][i] = DP[j][j][0] + matrix[i][j]; } else {
+                    if (DP[j][j][0] > 0) {
+                        DP[j][j][i] = DP[j][j][0] + matrix[i][j];
+                    } else {
                         DP[j][j][i] = matrix[i][j];
                         ST[j][j][i] = i;
                     }
@@ -101,6 +103,48 @@ public class MaxSubmatrixLcci {
                 }
             }
             return new int[] {sx, sy, ex, ey};
+        }
+
+        public int[] getMaxMatrix(int[][] matrix) {
+            int m = matrix.length, n = matrix[0].length;
+            int[][] preSum = new int[m][n];
+
+            for(int i = 0; i < n; i++) {
+                preSum[0][i] = matrix[0][i];
+                for(int j = 1; j < m; j++) {
+                    preSum[j][i] = preSum[j-1][i] + matrix[j][i];
+                }
+            }
+
+            int[] res = new int[4];
+            int max = Integer.MIN_VALUE;
+            for(int i = m-1; i >= 0; i--) {
+                for(int j = 0; j <= i; j++) {
+                    int begin = 0;
+                    int temp = 0;
+
+                    //开始最大子序和的dp求解
+                    int sum = 0, ans = 0;
+                    for(int k = 0; k < n; k++) {
+                        temp = preSum[i][k] - (j>0 ? preSum[j-1][k] : 0);
+
+                        if(sum > 0) {
+                            sum += temp;
+                        }else {
+                            sum = temp;
+                            begin = k;
+                        }
+
+                        if(sum > max) {
+                            max = sum;
+                            res[0] = j; res[2] = i; res[1] = begin; res[3] = k;
+                        }
+                    }
+                }
+            }
+
+            return res;
+
         }
     }
     //leetcode submit region end(Prohibit modification and deletion)

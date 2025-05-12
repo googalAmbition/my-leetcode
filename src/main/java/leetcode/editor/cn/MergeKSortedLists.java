@@ -48,11 +48,11 @@
 // 合并K个升序链表
 package leetcode.editor.cn;
 
-import leetcode.editor.cn.struct.ListNode;
-
 import java.util.Comparator;
 import java.util.PriorityQueue;
 import java.util.Queue;
+
+import leetcode.editor.cn.struct.ListNode;
 
 public class MergeKSortedLists {
 
@@ -74,6 +74,24 @@ public class MergeKSortedLists {
     class Solution {
 
         public ListNode mergeKLists(ListNode[] lists) {
+            Queue<ListNode> queue = new PriorityQueue<>(Comparator.comparingInt(x -> x.val));
+            for (ListNode list : lists) {
+                queue.offer(list);
+            }
+            ListNode head = new ListNode(0), cur = head;
+            while (!queue.isEmpty()) {
+                ListNode poll = queue.poll();
+                cur.next = poll;
+                cur = cur.next;
+                if (poll.next != null) {
+                    queue.offer(poll.next);
+                }
+
+            }
+            return head.next;
+        }
+
+        public ListNode mergeKLists2(ListNode[] lists) {
             return merge(lists, 0, lists.length - 1);
         }
 
@@ -112,9 +130,9 @@ public class MergeKSortedLists {
 
     public ListNode mergeKLists(ListNode[] lists) {
         Queue<ListNode> queue = new PriorityQueue<>(Comparator.comparingInt(x -> x.val));
-        for (ListNode list: lists) {
+        for (ListNode list : lists) {
             if (list != null) {
-                queue.add(list);
+                queue.offer(list);
             }
         }
         ListNode head = new ListNode(0);

@@ -50,6 +50,15 @@ public class ReverseLinkedList {
 
     public static void main(String[] args) {
         Solution solution = new ReverseLinkedList().new Solution();
+
+        ListNode node1 = new ListNode(1);
+        ListNode node2 = new ListNode(2);
+        ListNode node3 = new ListNode(3);
+        ListNode node4 = new ListNode(4);
+        node1.next = node2;
+        node2.next = node3;
+        node3.next = node4;
+        solution.reverseList(node1);
     }
     //leetcode submit region begin(Prohibit modification and deletion)
 
@@ -66,16 +75,28 @@ public class ReverseLinkedList {
     class Solution {
 
         public ListNode reverseList(ListNode head) {
-            ListNode prev = null;
-            ListNode curr = head;
-            while (curr != null) {
-                ListNode next = curr.next;
-                curr.next = prev;
-                prev = curr;
-                curr = next;
+
+            if (head == null || head.next == null){
+                return head;
             }
-            return prev;
+            ListNode last = reverseList(head.next);
+            head.next.next = head;
+            head.next = null;
+            return last;
+
         }
     }
     //leetcode submit region end(Prohibit modification and deletion)
+
+    public ListNode reverseList(ListNode head) {
+        ListNode prev = null;
+        ListNode curr = head;
+        while (curr != null) {
+            ListNode next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+        return prev;
+    }
 }

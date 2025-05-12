@@ -45,11 +45,10 @@ public class MinimumWindowSubstring {
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
 
-        HashMap<Character, Integer> need = new HashMap<>();
-        HashMap<Character, Integer> window = new HashMap<>();
 
         public String minWindow(String s, String t) {
-
+            HashMap<Character, Integer> need = new HashMap<>();
+            HashMap<Character, Integer> window = new HashMap<>();
             int tLen = t.length();//目标字符串
             int sLen = s.length();
             if (tLen == 0 || sLen == 0) {
@@ -62,10 +61,10 @@ public class MinimumWindowSubstring {
                 need.put(c, need.getOrDefault(c, 0) + 1);
             }
 
-            int left = 0, right = 0;
             int len = Integer.MAX_VALUE, start = 0;
             int valid = 0; //已经匹配成功的字符种类数（非字符个数）
 
+            int left = 0, right = 0;
             //当右指针去到字符串末尾前
             while (right < sLen) {
                 char c = s.charAt(right);

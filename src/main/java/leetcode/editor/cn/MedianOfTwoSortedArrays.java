@@ -70,42 +70,95 @@ public class MedianOfTwoSortedArrays {
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
 
+
         public double findMedianSortedArrays(int[] nums1, int[] nums2) {
-            if (nums1.length > nums2.length) {
-                return findMedianSortedArrays(nums2, nums1);
-            }
-
-            int m = nums1.length;
-            int n = nums2.length;
-            int left = 0, right = m;
-            // median1：前一部分的最大值
-            // median2：后一部分的最小值
-            int median1 = 0, median2 = 0;
-
-            while (left <= right) {
-                // 前一部分包含 nums1[0 .. i-1] 和 nums2[0 .. j-1]
-                // 后一部分包含 nums1[i .. m-1] 和 nums2[j .. n-1]
-                int i = (left + right) / 2;
-                int j = (m + n + 1) / 2 - i;
-
-                // nums_im1, nums_i, nums_jm1, nums_j 分别表示 nums1[i-1], nums1[i], nums2[j-1], nums2[j]
-                int nums_im1 = (i == 0 ? Integer.MIN_VALUE : nums1[i - 1]);
-                int nums_i = (i == m ? Integer.MAX_VALUE : nums1[i]);
-                int nums_jm1 = (j == 0 ? Integer.MIN_VALUE : nums2[j - 1]);
-                int nums_j = (j == n ? Integer.MAX_VALUE : nums2[j]);
-
-                if (nums_im1 <= nums_j) {
-                    median1 = Math.max(nums_im1, nums_jm1);
-                    median2 = Math.min(nums_i, nums_j);
-                    left = i + 1;
-                } else {
-                    right = i - 1;
-                }
-            }
-
-            return (m + n) % 2 == 0 ? (median1 + median2) / 2.0 : median1;
+            int length1 = nums1.length, length2 = nums2.length;
+            int totalLength = length1 + length2;
+            return (find1(nums1, nums2, (totalLength + 1) / 2) + find1(nums1, nums2, totalLength / 2 + 1)) / 2.0;
+            // if (totalLength % 2 == 1) {
+            //     int midIndex = totalLength / 2;
+            //     return find1(nums1, nums2, midIndex + 1);
+            // } else {
+            //     int midIndex1 = totalLength / 2 - 1, midIndex2 = totalLength / 2;
+            //     return (find1(nums1, nums2, midIndex1 + 1) + find1(nums1, nums2, midIndex2 + 1)) / 2.0;
+            // }
         }
+
+        private int find1(int[] nums1, int[] nums2, int k) {
+            int index1 = 0, index2 = 0;
+            int len1 = nums1.length, len2 = nums2.length;
+            while (k > 0) {
+                if (index1 == len1) {
+                    return nums2[index2 + k - 1];
+                }
+                if (index2 == len2) {
+                    return nums1[index1 + k - 1];
+                }
+                if (k == 1) {
+                    return Math.min(nums1[index1], nums2[index2]);
+                }
+
+                if (nums1[index1] > nums2[index2]) {
+                    index2++;
+                } else {
+                    index1++;
+                }
+                k--;
+            }
+            return 0;
+        }
+
+        public double findMedianSortedArrays2(int[] nums1, int[] nums2) {
+            int len1 = nums1.length, len2 = nums2.length, total = len1 + len2;
+
+            return (find(nums1, nums2, (total + 1) / 2) + find(nums1, nums2, (total + 2) / 2)) / 2.0;
+
+        }
+
+        private int find(int[] nums1, int[] nums2, int k) {
+            int index1 = 0, index2 = 0;
+            int length1 = nums1.length, length2 = nums2.length;
+            while (true) {
+                // 边界情况
+                if (index1 == length1) {
+                    return nums2[index2 + k - 1];
+                }
+                if (index2 == length2) {
+                    return nums1[index1 + k - 1];
+                }
+                if (k == 1) {
+                    return Math.min(nums1[index1], nums2[index2]);
+                }
+
+                // 正常情况
+                // int half = k / 2;
+                // int newIndex1 = Math.min(index1 + half, length1) - 1;
+                // int newIndex2 = Math.min(index2 + half, length2) - 1;
+                // int pivot1 = nums1[newIndex1], pivot2 = nums2[newIndex2];
+                // if (pivot1 <= pivot2) {
+                //     k -= (newIndex1 - index1 + 1);
+                //     index1 = newIndex1 + 1;
+                // } else {
+                //     k -= (newIndex2 - index2 + 1);
+                //     index2 = newIndex2 + 1;
+                // }
+
+                int pivot1 = nums1[index1], pivot2 = nums2[index2];
+                if (pivot1 < pivot2) {
+                    index1++;
+                } else {
+                    index2++;
+                }
+                k--;
+
+
+            }
+        }
+
+
     }
+
+
     //leetcode submit region end(Prohibit modification and deletion)
 
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
@@ -161,4 +214,141 @@ public class MedianOfTwoSortedArrays {
             }
         }
     }
+
+    public double findMedianSortedArrays5(int[] nums1, int[] nums2) {
+        int len1 = nums1.length, len2 = nums2.length, total = len1 + len2;
+
+        return (dfs(nums1, 0, nums2, 0, (total + 1) / 2) + dfs(nums1, 0, nums2, 0, (total + 2) / 2)) / 2.0;
+
+    }
+
+
+    private int dfs(int[] nums1, int index1, int[] nums2, int index2, int k) {
+        if (index1 >= nums1.length) {
+            return nums2[index2 + k - 1];
+        }
+        if (index2 >= nums2.length) {
+            return nums1[index1 + k - 1];
+        }
+        if (k == 1) {
+            return Math.min(nums1[index1], nums2[index2]);
+        }
+
+        int mid1 = index1 + k / 2 - 1 >= nums1.length ? Integer.MAX_VALUE : nums1[index1 + k / 2 - 1];
+        int mid2 = index2 + k / 2 - 1 >= nums2.length ? Integer.MAX_VALUE : nums2[index2 + k / 2 - 1];
+        if (mid1 < mid2) {
+            return dfs(nums1, index1 + k / 2, nums2, index2, k - k / 2);
+        }
+        return dfs(nums1, index1, nums2, index2 + k / 2, k - k / 2);
+
+    }
+
+
+    public double findMedianSortedArrays3(int[] nums1, int[] nums2) {
+        int len1 = nums1.length;
+        int len2 = nums2.length;
+        int total = len1 + len2;
+        int left = (total + 1) / 2;
+        int right = (total + 2) / 2;
+        return (findK2(nums1, 0, nums2, 0, left) + findK2(nums1, 0, nums2, 0, right)) / 2.0;
+
+    }
+
+    //找到两个数组中第k小的元素
+    public int findK2(int[] nums1, int i, int[] nums2, int j, int k) {
+        if (i >= nums1.length) {
+            return nums2[j + k - 1];
+        }
+        if (j >= nums2.length) {
+            return nums1[i + k - 1];
+        }
+        if (k == 1) {
+            return Math.min(nums1[i], nums2[j]);
+        }
+        //计算出每次要比较的两个数的值，来决定 "删除"" 哪边的元素
+        int mid1 = (i + k / 2 - 1) < nums1.length ? nums1[i + k / 2 - 1] : Integer.MAX_VALUE;
+        int mid2 = (j + k / 2 - 1) < nums2.length ? nums2[j + k / 2 - 1] : Integer.MAX_VALUE;
+        //通过递归的方式，来模拟删除掉前K/2个元素
+        if (mid1 < mid2) {
+            return findK2(nums1, i + k / 2, nums2, j, k - k / 2);
+        }
+        return findK2(nums1, i, nums2, j + k / 2, k - k / 2);
+    }
+
+    public double findMedianSortedArrays4(int[] nums1, int[] nums2) {
+        if (nums1.length > nums2.length) {
+            return findMedianSortedArrays4(nums2, nums1);
+        }
+
+        int m = nums1.length;
+        int n = nums2.length;
+        int left = 0, right = m;
+        // median1：前一部分的最大值
+        // median2：后一部分的最小值
+        int median1 = 0, median2 = 0;
+
+        while (left <= right) {
+            // 前一部分包含 nums1[0 .. i-1] 和 nums2[0 .. j-1]
+            // 后一部分包含 nums1[i .. m-1] 和 nums2[j .. n-1]
+            int i = (left + right) / 2;
+            int j = (m + n + 1) / 2 - i;
+
+            // nums_im1, nums_i, nums_jm1, nums_j 分别表示 nums1[i-1], nums1[i], nums2[j-1], nums2[j]
+            int nums_im1 = (i == 0 ? Integer.MIN_VALUE : nums1[i - 1]);
+            int nums_i = (i == m ? Integer.MAX_VALUE : nums1[i]);
+            int nums_jm1 = (j == 0 ? Integer.MIN_VALUE : nums2[j - 1]);
+            int nums_j = (j == n ? Integer.MAX_VALUE : nums2[j]);
+
+            if (nums_im1 <= nums_j) {
+                median1 = Math.max(nums_im1, nums_jm1);
+                median2 = Math.min(nums_i, nums_j);
+                left = i + 1;
+            } else {
+                right = i - 1;
+            }
+        }
+
+        return (m + n) % 2 == 0 ? (median1 + median2) / 2.0 : median1;
+    }
+
+    public double findMedianSortedArrays2(int[] nums1, int[] nums2) {
+        // if (nums1.length > nums2.length) {//保证num1长度小，如果不小我交换一下
+        //
+        //     int team[] = nums2.clone();
+        //     nums2 = nums1;
+        //     nums1 = team;
+        // }
+
+        if (nums1.length > nums2.length) {
+            return findMedianSortedArrays(nums2, nums1);
+        }
+        int k = (nums1.length + nums2.length + 1) / 2;//理论中位数满足的位置
+        int left = 0, right = nums1.length;//二分查找短的
+
+        while (left < right) {//找到对应位置
+            int m1 = (left + right) / 2;//在短的位置
+            int m2 = k - m1;//在长的第几个
+            //System.out.println(m1+" "+m2);
+            if (nums1[m1] < nums2[m2 - 1])//left右移
+            {
+                left = m1 + 1;
+            } else {//right左移
+                right = m1;
+            }
+        }
+        //System.out.println(left+" "+k);
+        //左侧最大和右侧最小那个先算出来再说，根据奇偶再使用
+        double leftbig =
+                Math.max(left == 0 ? Integer.MIN_VALUE : nums1[left - 1], k - left == 0 ? Integer.MIN_VALUE : nums2[k - left - 1]);
+        double rightsmall = Math.min(left == nums1.length ? Integer.MAX_VALUE : nums1[left],
+                k - left == nums2.length ? Integer.MAX_VALUE : nums2[k - left]);
+        //System.out.println(rightsmall);
+        if ((nums1.length + nums2.length) % 2 == 0) {
+            return (leftbig + rightsmall) / 2;
+        } else {
+            return leftbig;
+        }
+    }
+
+
 }

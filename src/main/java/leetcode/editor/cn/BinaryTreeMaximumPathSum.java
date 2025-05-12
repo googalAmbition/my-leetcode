@@ -61,7 +61,6 @@ public class BinaryTreeMaximumPathSum {
      * }
      */
     class Solution {
-
         int maxSum = Integer.MIN_VALUE;
 
         public int maxPathSum(TreeNode root) {
@@ -69,25 +68,50 @@ public class BinaryTreeMaximumPathSum {
             return maxSum;
         }
 
-        public int maxGain(TreeNode node) {
-            if (node == null) {
+        int maxGain(TreeNode root) {
+            if (root == null) {
                 return 0;
             }
 
-            // 递归计算左右子节点的最大贡献值
-            // 只有在最大贡献值大于 0 时，才会选取对应子节点
-            int leftGain = Math.max(maxGain(node.left), 0);
-            int rightGain = Math.max(maxGain(node.right), 0);
+            int left = Math.max(maxGain(root.left), 0);
+            int right = Math.max(maxGain(root.right), 0);
 
-            // 节点的最大路径和取决于该节点的值与该节点的左右子节点的最大贡献值
-            int priceNewpath = node.val + leftGain + rightGain;
+            int sum = left + right + root.val;
+            maxSum = Math.max(sum, maxSum);
 
-            // 更新答案
-            maxSum = Math.max(maxSum, priceNewpath);
+            return root.val + Math.max(left, right);
 
-            // 返回节点的最大贡献值
-            return node.val + Math.max(leftGain, rightGain);
+
         }
+
+
     }
     //leetcode submit region end(Prohibit modification and deletion)
+
+    int maxSum = Integer.MIN_VALUE;
+
+    public int maxPathSum(TreeNode root) {
+        maxGain(root);
+        return maxSum;
+    }
+
+    public int maxGain(TreeNode node) {
+        if (node == null) {
+            return 0;
+        }
+
+        // 递归计算左右子节点的最大贡献值
+        // 只有在最大贡献值大于 0 时，才会选取对应子节点
+        int leftGain = Math.max(maxGain(node.left), 0);
+        int rightGain = Math.max(maxGain(node.right), 0);
+
+        // 节点的最大路径和取决于该节点的值与该节点的左右子节点的最大贡献值
+        int priceNewpath = node.val + leftGain + rightGain;
+
+        // 更新答案
+        maxSum = Math.max(maxSum, priceNewpath);
+
+        // 返回节点的最大贡献值
+        return node.val + Math.max(leftGain, rightGain);
+    }
 }
